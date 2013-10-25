@@ -27,7 +27,7 @@ class GitAutoDeploy(BaseHTTPRequestHandler):
             for repository in myClass.config['repositories']:
                 if(not os.path.isdir(repository['path'])):
                     sys.exit('Directory ' + repository['path'] + ' not found')
-                if(not os.path.isdir(repository['path'] + '/.git')):
+                if(not os.path.exists(repository['path'] + '/.git')):
                     sys.exit('Directory ' + repository['path'] + ' is not a Git repository')
 
         return myClass.config
@@ -67,7 +67,7 @@ class GitAutoDeploy(BaseHTTPRequestHandler):
         if(not self.quiet):
             print "\nPost push request received"
             print 'Updating ' + path
-        call(['cd "' + path + '" && git pull'], shell=True)
+        call(['cd "' + path + '" && git pull && git submodule update'], shell=True)
 
     def deploy(self, path):
         config = self.getConfig()
