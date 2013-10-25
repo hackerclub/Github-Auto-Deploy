@@ -1,0 +1,14 @@
+{
+	"port": 8001, 
+	"repositories": 
+	[{
+		"url": "https://github.com/hackerclub/under-construction", 
+		"path": "/srv/http/hackevergreen",
+		"deploy": "echo Deploying under construction page"
+	},
+  {
+		"url": "https://github.com/hackerclub/labs", 
+		"path": "/srv/http/hackevergreen/labs",
+		"deploy": "echo Deploying labs"
+  }]
+}
